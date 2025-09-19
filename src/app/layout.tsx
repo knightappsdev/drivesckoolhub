@@ -1,59 +1,56 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Toaster } from 'react-hot-toast';
-import { ChatProvider } from '@/contexts/ChatContext';
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import './globals.css';
+import type { Metadata, Viewport } from 'next';
+import { Manrope } from 'next/font/google';
+import Header from '@/components/header';
+import { ThemeProvider } from '@/contexts/theme-context';
+import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: "DriveSchool Pro - Professional Driving School Management",
-  description: "Comprehensive driving school management system with multi-role dashboards, real-time messaging, and advanced admin controls",
+  title: siteConfig.title,
+  description: siteConfig.description,
+  formatDetection: {
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'DriveSchool Pro',
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: 'summary',
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
 };
 
+export const viewport: Viewport = {
+  maximumScale: 1,
+  themeColor: '#2563eb',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
+
+const manrope = Manrope({ subsets: ['latin'] });
+
 export default function RootLayout({
-  children,
-}: Readonly<{
+  children
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ChatProvider>
-          {children}
-        </ChatProvider>
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            duration: 4000,
-            style: {
-              background: '#363636',
-              color: '#fff',
-            },
-            success: {
-              duration: 3000,
-              style: {
-                background: '#10B981',
-              },
-            },
-            error: {
-              duration: 4000,
-              style: {
-                background: '#EF4444',
-              },
-            },
-          }}
-        />
+    <html
+      lang="en"
+      className={`${manrope.className}`}
+    >
+      <body className="min-h-[100dvh] bg-background text-foreground">
+        <ThemeProvider>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
