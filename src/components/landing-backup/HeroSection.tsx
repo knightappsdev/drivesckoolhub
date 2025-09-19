@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
+// Removed unused import
 
 const stats = [
   { number: '5000+', label: 'Students Trained' },

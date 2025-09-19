@@ -116,7 +116,7 @@ export default function ProcessSection() {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Follow our step-by-step guide to get your full UK driving license. 
-            We'll support you through every stage of your learning journey.
+            We&apos;ll support you through every stage of your learning journey.
           </p>
         </motion.div>
 
@@ -247,7 +247,7 @@ export default function ProcessSection() {
             </h3>
             <p className="text-blue-700 mb-6 max-w-2xl mx-auto">
               Our expert team is here to guide you through every stage of the process. 
-              From theory to practical, we'll make sure you're ready for success.
+              From theory to practical, we&apos;ll make sure you&apos;re ready for success.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a

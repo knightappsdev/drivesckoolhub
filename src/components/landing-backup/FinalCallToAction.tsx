@@ -244,7 +244,7 @@ export default function FinalCallToAction() {
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="text-lg mb-4">Questions? We're here to help!</p>
+          <p className="text-lg mb-4">Questions? We&apos;re here to help!</p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
             <a 
               href="tel:+447756183484"

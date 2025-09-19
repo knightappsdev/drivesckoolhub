@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import { 
   CurrencyDollarIcon, 
   CreditCardIcon,
-  TrendingUpIcon,
-  TrendingDownIcon,
+  ArrowTrendingUpIcon,
+  ArrowTrendingDownIcon,
   ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
 import {
@@ -118,9 +118,9 @@ const FinancialStatCard = ({
           {change !== undefined && (
             <div className="flex items-center mt-1">
               {change > 0 ? (
-                <TrendingUpIcon className="h-4 w-4 text-green-500 mr-1" />
+                <ArrowTrendingUpIcon className="h-4 w-4 text-green-500 mr-1" />
               ) : (
-                <TrendingDownIcon className="h-4 w-4 text-red-500 mr-1" />
+                <ArrowTrendingDownIcon className="h-4 w-4 text-red-500 mr-1" />
               )}
               <span className={`text-sm font-medium ${
                 change > 0 ? 'text-green-600' : 'text-red-600'
@@ -234,7 +234,7 @@ export default function FinancialAnalytics({ period }: FinancialAnalyticsProps) 
         <FinancialStatCard
           title="Avg Monthly Revenue"
           value={data.summary.avgMonthlyRevenue}
-          icon={TrendingUpIcon}
+          icon={ArrowTrendingUpIcon}
           format="currency"
           color="blue"
         />

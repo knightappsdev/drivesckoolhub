@@ -521,6 +521,33 @@ export async function createInAppNotification(
   }
 }
 
+// Generic notification sender
+export async function sendNotification(
+  type: NotificationType,
+  recipient: string | number,
+  title: string,
+  message: string
+): Promise<boolean> {
+  try {
+    switch (type) {
+      case 'email':
+        return await sendEmailNotification(recipient as string, title, message);
+      case 'sms':
+        return await sendSMSNotification(recipient as string, message);
+      case 'push':
+        return await sendPushNotification(recipient as number, title, message);
+      case 'in_app':
+        await createInAppNotification(recipient as number, title, message);
+        return true;
+      default:
+        throw new Error(`Unsupported notification type: ${type}`);
+    }
+  } catch (error) {
+    console.error(`Error sending ${type} notification:`, error);
+    return false;
+  }
+}
+
 // Main reminder processing function
 export async function processReminders(): Promise<void> {
   try {

@@ -341,7 +341,7 @@ export default function CoursesSection() {
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 mb-3">What you'll learn:</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">What you&apos;ll learn:</h4>
                   <ul className="space-y-2 mb-3">
                     {course.features.slice(0, 3).map((feature, index) => (
                       <li key={index} className="flex items-center text-sm">

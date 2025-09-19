@@ -11,10 +11,10 @@ import InstructorFilters from '@/components/driving-school/instructors/instructo
 import WhatsAppWidget from '@/components/driving-school/whatsapp/whatsapp-widget';
 import ExitIntentPopup from '@/components/driving-school/retargeting/exit-intent-popup';
 import ScrollToTop from '@/components/scroll-to-top';
-import RatingSystem from '@/components/driving-school/reviews/rating-system';
+// Removed RatingSystem import as Reviews section was removed
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { drivingCourses } from '@/lib/data/courses';
+import { useCourses } from '@/hooks/use-courses';
 import { drivingInstructors, getInstructorsByFilters } from '@/lib/data/instructors';
 import { Course } from '@/components/driving-school/courses/course-card';
 import { Instructor } from '@/components/driving-school/instructors/instructor-card';
@@ -22,6 +22,7 @@ import { useExitIntent } from '@/hooks/use-exit-intent';
 import { ArrowRight, Star, Users, CheckCircle, Calendar, MessageCircle, Phone } from 'lucide-react';
 
 export default function HomePage() {
+  const { courses: drivingCourses, loading: coursesLoading, error: coursesError } = useCourses();
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isCourseModalOpen, setIsCourseModalOpen] = useState(false);
   const [isExitIntentPopupOpen, setIsExitIntentPopupOpen] = useState(false);
@@ -119,15 +120,32 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {drivingCourses.map((course) => (
-              <CourseCard 
-                key={course.id} 
-                course={course} 
-                onViewDetails={handleCourseViewDetails}
-              />
-            ))}
-          </div>
+          {coursesLoading ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="animate-pulse">
+                  <div className="bg-gray-200 rounded-lg h-64"></div>
+                </div>
+              ))}
+            </div>
+          ) : coursesError ? (
+            <div className="text-center py-12">
+              <div className="text-red-500 mb-4">Failed to load courses</div>
+              <Button onClick={() => window.location.reload()}>
+                Try Again
+              </Button>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {drivingCourses.map((course) => (
+                <CourseCard 
+                  key={course.id} 
+                  course={course} 
+                  onViewDetails={handleCourseViewDetails}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -273,7 +291,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">Start Your Driving Journey Today</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Don't wait any longer. Get behind the wheel with the UK's most trusted driving school.
+            Don&apos;t wait any longer. Get behind the wheel with the UK&apos;s most trusted driving school.
           </p>
           <div className="flex items-center justify-center gap-4 mb-8">
             <CheckCircle className="w-6 h-6 text-green-400" />
@@ -308,20 +326,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Powered By Footer */}
+      <section className="py-8 bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Reviews & Ratings</h2>
-            <p className="text-xl text-gray-600">See what our students and their families have to say</p>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <RatingSystem
-              type="general"
-              showAddReview={true}
-              className=""
-            />
+          <div className="text-center">
+            <p className="text-gray-400 text-sm">
+              Powered by{' '}
+              <a 
+                href="https://knightappsdev.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors font-medium"
+              >
+                knightappsdev
+              </a>
+            </p>
           </div>
         </div>
       </section>

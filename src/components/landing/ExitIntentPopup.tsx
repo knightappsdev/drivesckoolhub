@@ -142,7 +142,7 @@ They were about to leave but claimed the free lesson offer!`;
                 >
                   <GiftIcon className="w-16 h-16 mx-auto mb-4" />
                 </motion.div>
-                <h2 className="text-2xl font-bold mb-2">Don't Go Yet!</h2>
+                <h2 className="text-2xl font-bold mb-2">Don&apos;t Go Yet!</h2>
                 <p className="text-lg">Claim Your <strong>1 Hour FREE Lesson</strong></p>
                 <div className="text-sm mt-2 bg-red-600 bg-opacity-50 rounded-lg px-3 py-1 inline-block">
                   ⏰ Limited Time Offer - Expires Soon!
@@ -306,7 +306,7 @@ They were about to leave but claimed the free lesson offer!`;
                   <li>✅ Confirmation email sent</li>
                   <li>✅ WhatsApp message dispatched</li>
                   <li>✅ Instructor assignment in progress</li>
-                  <li>✅ We'll call you within 24 hours</li>
+                  <li>✅ We&apos;ll call you within 24 hours</li>
                 </ul>
               </div>
 

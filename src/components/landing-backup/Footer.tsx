@@ -21,7 +21,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const handleWhatsApp = () => {
-    const phoneNumber = "+2347038781234";
+    const phoneNumber = "+447756183484";
     const message = "Hi! I found your driving school website and I'm interested in learning more about your courses.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -43,15 +43,15 @@ const Footer = () => {
             </div>
             
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Nigeria's premier driving school offering professional driving lessons with certified instructors. 
-              We've helped over 500 students become confident, safe drivers with our comprehensive training programs.
+              The UK&apos;s premier driving school offering professional driving lessons with DVSA-approved instructors. 
+              We&apos;ve helped over 2,000 students pass their driving test with our comprehensive training programs.
             </p>
             
             {/* Key Features */}
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div className="flex items-center gap-2">
                 <Award className="w-5 h-5 text-teal-400" />
-                <span className="text-sm">Certified Instructors</span>
+                <span className="text-sm">DVSA Approved Instructors</span>
               </div>
               <div className="flex items-center gap-2">
                 <Shield className="w-5 h-5 text-blue-400" />
@@ -59,7 +59,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Users className="w-5 h-5 text-green-400" />
-                <span className="text-sm">500+ Graduates</span>
+                <span className="text-sm">2,000+ Graduates</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-yellow-400" />
@@ -108,17 +108,17 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300 text-sm">
-                    123 Driving Street,<br />
-                    Victoria Island, Lagos,<br />
-                    Nigeria
+                    45 High Street,<br />
+                    Central London, SW1A 1AA,<br />
+                    United Kingdom
                   </p>
                 </div>
               </div>
               
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-green-400" />
-                <a href="tel:+2347038781234" className="text-gray-300 hover:text-white transition-colors">
-                  +234 703 878 1234
+                <a href="tel:+447756183484" className="text-gray-300 hover:text-white transition-colors">
+                  +44 7756 183484
                 </a>
               </div>
               
@@ -164,10 +164,10 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4 text-yellow-400">Our Locations</h4>
               <div className="space-y-2 text-gray-300">
-                <div>📍 Victoria Island (Head Office)</div>
-                <div>📍 Ikeja Training Center</div>
-                <div>📍 Lekki Branch</div>
-                <div>📍 Surulere Office</div>
+                <div>📍 Central London (Head Office)</div>
+                <div>📍 Manchester Training Center</div>
+                <div>📍 Birmingham Branch</div>
+                <div>📍 Leeds Office</div>
               </div>
             </div>
           </div>

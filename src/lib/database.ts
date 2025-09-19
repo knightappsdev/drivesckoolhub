@@ -52,6 +52,9 @@ export async function executeQuerySingle<T = any>(
   return results.length > 0 ? results[0] : null;
 }
 
+// Alias for compatibility with existing imports
+export const query = executeQuery;
+
 // User-related database functions
 export async function getUserByEmail(email: string): Promise<User & { password_hash: string } | null> {
   const query = `

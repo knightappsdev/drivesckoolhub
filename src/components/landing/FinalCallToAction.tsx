@@ -116,7 +116,7 @@ export default function FinalCallToAction() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Don't wait any longer. Get behind the wheel with the UK's most trusted driving school.
+            Don&apos;t wait any longer. Get behind the wheel with the UK&apos;s most trusted driving school.
             <span className="block mt-2 text-lg">
               Professional instruction • Proven results • Exceptional support
             </span>
@@ -244,7 +244,7 @@ export default function FinalCallToAction() {
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="text-lg mb-4">Questions? We're here to help!</p>
+          <p className="text-lg mb-4">Questions? We&apos;re here to help!</p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
             <a 
               href="tel:+447756183484"

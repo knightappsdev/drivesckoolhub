@@ -135,7 +135,7 @@ export default function WhatsAppChat() {
                 </motion.button>
               </div>
               <p className="text-xs text-gray-500 mt-2">
-                You'll be redirected to WhatsApp to continue the conversation
+                You&apos;ll be redirected to WhatsApp to continue the conversation
               </p>
             </div>
           </motion.div>

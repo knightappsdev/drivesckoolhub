@@ -85,8 +85,24 @@ const courses = [
   }
 ];
 
+interface Course {
+  id: string;
+  name: string;
+  description: string;
+  duration: string;
+  price: number;
+  features: string[];
+  whyChoose: string[];
+  vehicleTypes: string[];
+  liveStats: {
+    enrolled: number;
+    completed: number;
+    passRate: number;
+  };
+}
+
 interface CourseModalProps {
-  course: any;
+  course: Course | null;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -114,7 +130,7 @@ Phone: ${formData.phone}`;
 
   const handleOptOut = () => {
     // Simple opt-out form simulation
-    const reason = prompt('What made you change your mind? (Optional feedback)');
+    prompt('What made you change your mind? (Optional feedback)');
     onClose();
   };
 
@@ -178,7 +194,7 @@ Phone: ${formData.phone}`;
                   Vehicle Type
                 </h4>
                 <div className="flex gap-3">
-                  {course.vehicleTypes.map((type: string) => (
+                  {course.vehicleTypes.map((type) => (
                     <button
                       key={type}
                       onClick={() => setSelectedVehicle(type)}
@@ -198,7 +214,7 @@ Phone: ${formData.phone}`;
               <div className="mb-6">
                 <h4 className="font-semibold mb-3">What's Included</h4>
                 <ul className="space-y-2">
-                  {course.features.map((feature: string, index: number) => (
+                  {course.features.map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckIcon className="h-4 w-4 text-green-500 flex-shrink-0" />
                       <span className="text-gray-700">{feature}</span>
@@ -211,7 +227,7 @@ Phone: ${formData.phone}`;
               <div className="mb-6 bg-green-50 p-4 rounded-lg">
                 <h4 className="font-semibold text-green-800 mb-3">Why Choose This Course</h4>
                 <ul className="space-y-2">
-                  {course.whyChoose.map((reason: string, index: number) => (
+                  {course.whyChoose.map((reason, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
                       <span className="text-green-700">{reason}</span>
@@ -296,10 +312,10 @@ Phone: ${formData.phone}`;
 }
 
 export default function CoursesSection() {
-  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = (course: any) => {
+  const openModal = (course: Course) => {
     setSelectedCourse(course);
     setIsModalOpen(true);
   };
@@ -341,7 +357,7 @@ export default function CoursesSection() {
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 mb-3">What you'll learn:</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">What you&apos;ll learn:</h4>
                   <ul className="space-y-2 mb-3">
                     {course.features.slice(0, 3).map((feature, index) => (
                       <li key={index} className="flex items-center text-sm">

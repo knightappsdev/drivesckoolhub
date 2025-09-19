@@ -97,7 +97,7 @@ const InstructorCTA = () => {
                   <h4 className="text-2xl font-bold mb-4">Start Today!</h4>
                   <p className="text-lg mb-6">Book your first lesson and get started on your driving journey</p>
                   
-                  <div className="text-3xl font-bold mb-2">₦25,000</div>
+                  <div className="text-3xl font-bold mb-2">£450</div>
                   <div className="text-lg opacity-90">Complete Course Package</div>
                 </div>
 
@@ -130,12 +130,12 @@ const InstructorCTA = () => {
           {/* Additional Info */}
           <div className="text-center mt-12">
             <p className="text-gray-600 mb-4">
-              Still have questions? We're here to help!
+              Still have questions? We&apos;re here to help!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center gap-2 text-gray-700">
                 <Phone className="w-5 h-5 text-blue-600" />
-                <span>+234 703 878 1234</span>
+                <span>+44 7756 183484</span>
               </div>
               <div className="hidden sm:block text-gray-400">•</div>
               <div className="flex items-center gap-2 text-gray-700">
