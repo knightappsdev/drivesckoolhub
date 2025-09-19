@@ -86,7 +86,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
 
       if (response.ok) {
         toast.success('Logged out successfully');
-        router.push('/login');
+        router.push('/');
       } else {
         toast.error('Logout failed');
       }
@@ -123,7 +123,9 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
       <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
         <div className="flex flex-col flex-grow bg-white shadow-lg">
           <div className="flex items-center flex-shrink-0 px-6 py-4 border-b">
-            <h1 className="text-xl font-bold text-gray-900">DriveSchool Pro</h1>
+            <a href="/" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+              DriveSchool Pro
+            </a>
           </div>
           
           <div className="flex flex-col flex-1 overflow-y-auto">
@@ -195,7 +197,9 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
             >
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between px-6 py-4 border-b">
-                  <h1 className="text-xl font-bold text-gray-900">DriveSchool Pro</h1>
+                  <a href="/" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                    DriveSchool Pro
+                  </a>
                   <button
                     onClick={() => setIsSidebarOpen(false)}
                     className="p-1 rounded-md hover:bg-gray-100"

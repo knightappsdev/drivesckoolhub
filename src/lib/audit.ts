@@ -1,4 +1,4 @@
-import { query } from './database';
+import { executeQuery, executeQuerySingle } from './database';
 import { User } from './auth';
 
 // Audit action types
@@ -47,7 +47,7 @@ export interface LoginAttemptData {
 // Create audit log entry
 export async function createAuditLog(data: AuditLogData): Promise<void> {
   try {
-    await query(
+    await executeQuery(
       `INSERT INTO audit_logs 
        (user_id, action, table_name, record_id, old_values, new_values, ip_address, user_agent) 
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -71,7 +71,7 @@ export async function createAuditLog(data: AuditLogData): Promise<void> {
 // Create system event log
 export async function createSystemEvent(data: SystemEventData): Promise<void> {
   try {
-    await query(
+    await executeQuery(
       `INSERT INTO system_events 
        (event_type, event_data, severity, source) 
        VALUES (?, ?, ?, ?)`,
@@ -90,7 +90,7 @@ export async function createSystemEvent(data: SystemEventData): Promise<void> {
 // Log login attempt
 export async function logLoginAttempt(data: LoginAttemptData): Promise<void> {
   try {
-    await query(
+    await executeQuery(
       `INSERT INTO login_attempts 
        (email, ip_address, user_agent, success, failure_reason) 
        VALUES (?, ?, ?, ?, ?)`,
@@ -115,7 +115,7 @@ async function updateActivitySummary(successfulLogin: boolean): Promise<void> {
   try {
     const today = new Date().toISOString().split('T')[0];
     
-    await query(
+    await executeQuery(
       `INSERT INTO activity_summaries (date, total_actions, successful_logins, failed_logins)
        VALUES (?, 1, ?, ?)
        ON DUPLICATE KEY UPDATE
@@ -188,7 +188,7 @@ export async function getAuditLogs(params: {
 
     const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
 
-    const logs = await query(
+    const logs = await executeQuery(
       `SELECT 
         al.*,
         u.first_name,
@@ -203,7 +203,7 @@ export async function getAuditLogs(params: {
       [...values, limit, offset]
     );
 
-    const totalResult = await query(
+    const totalResult = await executeQuery(
       `SELECT COUNT(*) as total FROM audit_logs al ${whereClause}`,
       values
     );
@@ -277,7 +277,7 @@ export async function getSystemEvents(params: {
 
     const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
 
-    const events = await query(
+    const events = await executeQuery(
       `SELECT * FROM system_events 
        ${whereClause}
        ORDER BY created_at DESC
@@ -285,7 +285,7 @@ export async function getSystemEvents(params: {
       [...values, limit, offset]
     );
 
-    const totalResult = await query(
+    const totalResult = await executeQuery(
       `SELECT COUNT(*) as total FROM system_events ${whereClause}`,
       values
     );
@@ -351,7 +351,7 @@ export async function getLoginAttempts(params: {
 
     const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
 
-    const attempts = await query(
+    const attempts = await executeQuery(
       `SELECT * FROM login_attempts 
        ${whereClause}
        ORDER BY created_at DESC
@@ -359,7 +359,7 @@ export async function getLoginAttempts(params: {
       [...values, limit, offset]
     );
 
-    const totalResult = await query(
+    const totalResult = await executeQuery(
       `SELECT COUNT(*) as total FROM login_attempts ${whereClause}`,
       values
     );

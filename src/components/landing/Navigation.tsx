@@ -60,15 +60,14 @@ export default function Navigation() {
               href="/login"
               className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
-              Login
+              Sign In
             </Link>
-            <a
-              href="tel:+447756183484"
-              className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            <Link
+              href="/signup"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
             >
-              <PhoneIcon className="w-4 h-4" />
-              <span className="text-sm font-medium">Call Now</span>
-            </a>
+              Sign Up
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -114,16 +113,15 @@ export default function Navigation() {
                     className="w-full text-center bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    Login
+                    Sign In
                   </Link>
-                  <a
-                    href="tel:+447756183484"
-                    className="w-full flex items-center justify-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  <Link
+                    href="/signup"
+                    className="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    <PhoneIcon className="w-4 h-4" />
-                    <span>Call Now</span>
-                  </a>
+                    Sign Up
+                  </Link>
                 </div>
               </div>
             </div>
